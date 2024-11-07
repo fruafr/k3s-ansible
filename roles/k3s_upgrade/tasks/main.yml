@@ -2,7 +2,7 @@
 # with_fileglob doesn't work with remote_src, it tries to find the file on the
 # local control-plane instead of the remote host. Shell supports wildcards.
 - name: Get k3s installed version
-  ansible.builtin.command: k3s --version
+  ansible.builtin.command: /usr/local/bin/k3s --version
   register: k3s_version_output
   changed_when: false
 

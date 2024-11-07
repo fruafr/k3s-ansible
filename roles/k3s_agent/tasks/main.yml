@@ -1,6 +1,6 @@
 ---
 - name: Get k3s installed version
-  ansible.builtin.command: k3s --version
+  ansible.builtin.command: /usr/local/bin/k3s --version
   register: k3s_version_output
   changed_when: false
   ignore_errors: true

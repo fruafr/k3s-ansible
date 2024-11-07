@@ -1,6 +1,6 @@
 ---
 - name: Get k3s installed version
-  ansible.builtin.command: k3s --version
+  ansible.builtin.command: /usr/local/bin/k3s --version
   register: k3s_version_output
   changed_when: false
   ignore_errors: true
@@ -243,7 +243,7 @@
       when: (groups[server_group] | length) > 1
       ansible.builtin.command:
         cmd: >
-          k3s kubectl get nodes -l "node-role.kubernetes.io/control-plane=true" -o=jsonpath="{.items[*].metadata.name}"
+          /usr/local/bin/k3s kubectl get nodes -l "node-role.kubernetes.io/control-plane=true" -o=jsonpath="{.items[*].metadata.name}"
       register: nodes
       until: nodes.rc == 0 and (nodes.stdout.split() | length) == (groups[server_group] | length)
       retries: 20
